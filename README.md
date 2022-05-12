@@ -21,6 +21,18 @@ The nodes are typically divided in two main sets, each of them hosting different
 The control plane. These nodes are the brain of the cluster. They contain the Kubernetes components that track the desired state, the current node state and make container scheduling decisions across the worker nodes.
 The worker nodes. These nodes are focused on hosting the desired containers. They contain the Kubernetes components that ensure containers assigned to a given node are created/terminated as decided by the control plane
 
+## Setup your local environment
+The main thing you will need is a way to create a Kubernetes cluster in your local machine. While Docker for Windows/Mac comes with built-in support for Kubernetes, I recommend using minikube to setup your local environment. The addons and extra features minikube provides simplifies many of the scenarios you might want to test locally.
+
+Minikube will create a very simple cluster with a single Virtual Machine where all the Kubernetes components will be deployed. This means you will need some container/virtualization solution installed on your machine, of which minikube supports a long list. Check the prerequisites and installation instructions for your OS in the official minikube docs.
+
+In addition, you will also need kubectl installed on your local machine. You have various options:
+
+Install it locally in your machine, see the instructions in the official docs.
+Use the version provided by minikube. Note that if you choose this option, when you see a command like kubectl get pod you will need to replace it with minikube kubectl — get pod.
+If you previously enabled Kubernetes support in Docker, you should already have a version of kubectl installed. Check with kubectl version.
+Once you have both minikube and kubectl up and running in your machine, you are ready to start. Ask minikube to create your local cluster with:
+
 ## What is kind?
 [kind](https://kind.sigs.k8s.io/) is a tool for running local Kubernetes clusters using Docker container “nodes”.
 
