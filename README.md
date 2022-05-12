@@ -1,6 +1,6 @@
 # Wordpress demo
 
-Sample repository that demonstrates using wordpress in kind cluster.  
+Sample repository that demonstrates using wordpress in [kind](https://kind.sigs.k8s.io/) cluster.  
 
 In this article, we will show the steps to run a cluster in single Docker container using kind. kind is a good alternative to minikube because it only uses single container of Docker.
 
@@ -8,7 +8,7 @@ By combining Kustomze which was integrated to Kubernetes 1.14, it is pretty stra
 
 ## Kubernetes architecture
 
-Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation
+[Kubernetes](https://kubernetes.io/) is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation
 
 In essence, this means Kubernetes is a container orchestration engine, a platform designed to host and run containers across a number of nodes.
 
