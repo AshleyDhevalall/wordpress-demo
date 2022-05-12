@@ -13,16 +13,37 @@ By combining Kustomze which was integrated to Kubernetes 1.14, it is pretty stra
 To create a cluster in kind, run these commands (it takes a while)
 ```
 $ kind create cluster
+Creating cluster "kind" ...
+ • Ensuring node image (kindest/node:v1.23.4) 🖼  ...
+ ✓ Ensuring node image (kindest/node:v1.23.4) 🖼
+ • Preparing nodes 📦   ...
+ ✓ Preparing nodes 📦
+ • Writing configuration 📜  ...
+ ✓ Writing configuration 📜
+ • Starting control-plane 🕹️  ...
+ ✓ Starting control-plane 🕹️
+ • Installing CNI 🔌  ...
+ ✓ Installing CNI 🔌
+ • Installing StorageClass 💾  ...
+ ✓ Installing StorageClass 💾
+Set kubectl context to "kind-kind"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kind
+
+Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
 ```
 
 Then confirm “kind” cluster is available.
 ```
 $ kind get clusters
+kind
 ```
 
 To delete a cluster in kind
 ```
 $ kind delete cluster
+Deleting cluster "kind" ...
 ```
 
 ## Setting up kubectl
@@ -31,11 +52,17 @@ The latest Docker has Kubernetes feature but it may come with older kubectl .
 Check its version by running this command.
 ```
 $ kubectl version
+Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.0", GitCommit:"ab69524f795c42094a6630298ff53f3c3ebab7f4", GitTreeState:"clean", BuildDate:"2021-12-07T18:16:20Z", GoVersion:"go1.17.3", Compiler:"gc", Platform:"windows/amd64"}
+Server Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.4", GitCommit:"e6c093d87ea4cbb530a7b2ae91e54c0842d8308a", GitTreeState:"clean", BuildDate:"2022-03-06T21:32:53Z", GoVersion:"go1.17.7", Compiler:"gc", Platform:"linux/amd64"}
 ```
 Once kubectl and kind are ready, open bash console and run these commands.
 
 ```
 $ kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:59593
+CoreDNS is running at https://127.0.0.1:59593/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
 If kind is properly set up, some information will be shown.
