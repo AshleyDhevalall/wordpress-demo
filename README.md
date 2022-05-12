@@ -133,3 +133,5 @@ Forwarding from [::1]:8080 -> 80
 ```
 
 And open http://localhost:8080/
+
+![test](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/docs/wordpress.png)
