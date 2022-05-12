@@ -52,7 +52,7 @@ Once those yaml files are prepared, layout them as following,
 
 -  [kustomization.yaml](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/kustomization.yaml)
 -  [mysql-deployment.yaml](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/mysql-deployment.yaml)
--  [wordpress-deployment.yaml(https://github.com/AshleyDhevalall/wordpress-demo/blob/main/wordpress-deployment.yaml)
+-  [wordpress-deployment.yaml](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/wordpress-deployment.yaml)
 
 Then apply them to your cluster.
 ```
