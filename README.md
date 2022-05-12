@@ -1,6 +1,7 @@
 # Wordpress demo
 
 Sample repository that demonstrates using wordpress in [kind](https://kind.sigs.k8s.io/) cluster.  
+<br>
 
 In this article, we will show the steps to run a cluster in single Docker container using [kind](https://kind.sigs.k8s.io/).   
 
@@ -101,7 +102,7 @@ persistentvolumeclaim/mysql-pv-claim created
 persistentvolumeclaim/wp-pv-claim created
 ```  
 
-Check cluster’s secrets by running the blow command
+Check cluster’s secrets by running the below command
 ```
 $ kubectl get secrets
 NAME                    TYPE                                  DATA   AGE
