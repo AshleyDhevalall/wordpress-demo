@@ -7,10 +7,9 @@ In this article, I will show the steps to run a cluster in single Docker contain
 [kind](https://kind.sigs.k8s.io/) is a tool for running local Kubernetes clusters using Docker container “nodes”.
 
 ## Installing kind
-Because kind is implemented in go, make sure the latest golang is installed. According to contributor’s doc, go1.11.5or greater is preferred.
+Because kind is implemented in go, make sure the latest golang is installed.
 To install kind, run these commands (it takes a while)
 
-go get -u sigs.k8s.io/kind
 ```
 kind create cluster
 ```
