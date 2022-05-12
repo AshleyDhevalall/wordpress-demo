@@ -120,6 +120,7 @@ $ kubectl get pods
 wordpress-69b54b758-lq4xq          1/1     Running   1 (2m38s ago)   6m37s
 wordpress-mysql-6fc4d469bd-bqdbm   1/1     Running   0               6m37s
 ```
+```
 $ kubectl get services wordpress
 NAME        TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
 wordpress   LoadBalancer   10.96.248.160   <pending>     80:31776/TCP   8m13s
