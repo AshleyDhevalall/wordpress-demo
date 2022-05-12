@@ -1,4 +1,4 @@
-# Wordpress demo using kind
+# Wordpress demo
 
 Sample repository that demonstrates using wordpress in kind cluster.  
 
