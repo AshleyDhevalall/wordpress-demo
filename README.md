@@ -1,4 +1,5 @@
-# wordpress-demo
+# Wordpress demo using kind
+
 Sample repository that demonstrates using wordpress in kind cluster.  
 
 In this article, I will show the steps to run a cluster in single Docker container using kind.
