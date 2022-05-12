@@ -49,7 +49,7 @@ Creating cluster "kind" ...
 Set kubectl context to "kind-kind"
 You can now use your cluster with:
 
-kubectl cluster-info --context kind-kind
+$ kubectl cluster-info --context kind-kind
 
 ```
 
@@ -128,6 +128,8 @@ Wait until all the pods become Running status.
 Then, run this command to access the service.
 ```
 $ kubectl port-forward svc/wordpress 8080:80
+Forwarding from 127.0.0.1:8080 -> 80
+Forwarding from [::1]:8080 -> 80
 ```
 
 And open http://localhost:8080/
