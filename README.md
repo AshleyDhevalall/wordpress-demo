@@ -6,6 +6,21 @@ In this article, we will show the steps to run a cluster in single Docker contai
 
 By combining Kustomze which was integrated to Kubernetes 1.14, it is pretty straightforward to try it on your local machine.
 
+## Kubernetes architecture
+
+Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation
+
+In essence, this means Kubernetes is a container orchestration engine, a platform designed to host and run containers across a number of nodes.
+
+To do so, Kubernetes abstracts the nodes where you want to host your containers as a pool of cpu/memory resources. When you want to host a container, you just declare to the Kubernetes API the details of the container (like its image and tag names and the necessary cpu/memory resources) and Kubernetes will transparently host it somewhere across the available nodes.
+
+In order to do so, the architecture of Kubernetes is broken down into several components that track the desired state (ie, the containers that users wanted to deploy) and apply the necessary changes to the nodes in order to achieve that desired state (ie, adds/removes containers and other elements).
+
+The nodes are typically divided in two main sets, each of them hosting different elements of the Kubernetes architecture depending on the role these nodes will play:
+
+The control plane. These nodes are the brain of the cluster. They contain the Kubernetes components that track the desired state, the current node state and make container scheduling decisions across the worker nodes.
+The worker nodes. These nodes are focused on hosting the desired containers. They contain the Kubernetes components that ensure containers assigned to a given node are created/terminated as decided by the control plane
+
 ## What is kind?
 [kind](https://kind.sigs.k8s.io/) is a tool for running local Kubernetes clusters using Docker container “nodes”.
 
