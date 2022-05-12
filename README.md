@@ -88,6 +88,8 @@ Now you are ready to proceed. Yay!
 git clone https://github.com/AshleyDhevalall/wordpress-demo.git
 ```
 
+## Launch powershell terminal as administration in the cloned repository.
+
 ## Apply manifest files to your cluster.
 ```
 $ kubectl apply -k ./
