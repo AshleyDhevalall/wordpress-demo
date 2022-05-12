@@ -25,14 +25,9 @@ Check its version by running this command.
 ```
 $ kubectl version
 ```
-
-Make sure it shows GitVersion: "v1.14.1" or above.
-If you find you are running kubectlfrom Docker, try brew link or reorder path environment variable.
-
 Once kubectl and kind are ready, open bash console and run these commands.
 
 ```
-export KUBECONFIG=”$(kind get kubeconfig-path)”
 $ kubectl cluster-info
 ```
 
@@ -43,25 +38,13 @@ Now you are ready to proceed. Yay!
 What should we deploy on the cluster? One good choice will be Wordpress because it consists of MySQL and PHP application.
 Luckily, there is an official tutorial which is pretty well described. We can try most steps of it using kind cluster which we just created.
 
-https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/
-
-Clone the repository onto your local machine
+## Clone the repository onto your local machine
 ```
-git clone 
+git clone https://github.com/AshleyDhevalall/wordpress-demo.git
 ```
 
-First of all, download mysql-deployment.yaml and wordpress-deployment.yaml from the page.
-
-And create kustomization.yaml by running two cat commands.
-Once those yaml files are prepared, layout them as following,
-
--  [kustomization.yaml](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/kustomization.yaml)
--  [mysql-deployment.yaml](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/mysql-deployment.yaml)
--  [wordpress-deployment.yaml](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/wordpress-deployment.yaml)
-
-Then apply them to your cluster.
+## Then apply them to your cluster.
 ```
-cd k8s-wp
 $ kubectl apply -k ./
 ```  
 
