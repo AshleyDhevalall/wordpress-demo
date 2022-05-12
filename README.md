@@ -1,16 +1,10 @@
 # wordpress-demo
-Sample repository that demostrates using wordpress in kind cluster
-
-## Introduction
-Have you spent all the day trying tutorials of Kubernetes? You don’t have to do that thanks to the latest tools.
+Sample repository that demostrates using wordpress in kind cluster.  
 
 In this article, I will show the steps to run a cluster in single Docker container using kind.
 
 ## What is kind?
-kind is a tool for running local Kubernetes clusters using Docker container “nodes”.
-https://kind.sigs.k8s.io/
-
-There seems no description but it’s clearly coming from “Kubernetes IN Docker”. Its upside is cross-platform friendliness even with Docker for Windows. Of course, downside is poor googlability as you can see.
+[kind](https://kind.sigs.k8s.io/) is a tool for running local Kubernetes clusters using Docker container “nodes”.
 
 ## Installing kind
 Because kind is implemented in go, make sure the latest golang is installed. According to contributor’s doc, go1.11.5or greater is preferred.
