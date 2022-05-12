@@ -49,9 +49,9 @@ First of all, download mysql-deployment.yaml and wordpress-deployment.yaml from 
 And create kustomization.yaml by running two cat commands.
 Once those yaml files are prepared, layout them as following,
 
--  kustomization.yaml
--  mysql-deployment.yaml
--  wordpress-deployment.yaml
+-  [kustomization.yaml](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/kustomization.yaml)
+-  [mysql-deployment.yaml](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/mysql-deployment.yaml)
+-  [wordpress-deployment.yaml(https://github.com/AshleyDhevalall/wordpress-demo/blob/main/wordpress-deployment.yaml)
 
 Then apply them to your cluster.
 ```
