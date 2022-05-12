@@ -2,7 +2,7 @@
 
 Sample repository that demonstrates using wordpress in [kind](https://kind.sigs.k8s.io/) cluster.  
 
-In this article, we will show the steps to run a cluster in single Docker container using kind. kind is a good alternative to minikube because it only uses single container of Docker.
+In this article, we will show the steps to run a cluster in single Docker container using [kind](https://kind.sigs.k8s.io/). kind is a good alternative to minikube because it only uses single container of Docker.
 
 By combining Kustomze which was integrated to Kubernetes 1.14, it is pretty straightforward to try it on your local machine.
 
