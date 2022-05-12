@@ -38,7 +38,7 @@ $ kubectl cluster-info
 If kind is properly set up, some information will be shown.
 Now you are ready to proceed. Yay!
 
-## Deploying first application
+## Deploying Wordpress and MySQL
 What should we deploy on the cluster? One good choice will be Wordpress because it consists of MySQL and PHP application.
 Luckily, there is an official tutorial which is pretty well described. We can try most steps of it using kind cluster which we just created.
 
