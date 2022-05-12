@@ -68,10 +68,3 @@ $ kubectl port-forward svc/wordpress 8080:80
 ```
 
 And open http://localhost:8080/
-
-
-Voila!
-If you want to inspect database, check your pods, run a command like this and open your client app.
-
-kubectl port-forward wordpress-mysql-bc9864c58-ffh4c 3306:3306
-Conclusion
