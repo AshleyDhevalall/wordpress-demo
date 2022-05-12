@@ -31,7 +31,6 @@ You can now use your cluster with:
 
 kubectl cluster-info --context kind-kind
 
-Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
 ```
 
 Then confirm “kind” cluster is available.
@@ -105,7 +104,8 @@ wordpress-mysql-6fc4d469bd-bqdbm   1/1     Running   0               6m37s
 $ kubectl get services wordpress
 NAME        TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
 wordpress   LoadBalancer   10.96.248.160   <pending>     80:31776/TCP   8m13s
-```
+```  
+
 Wait until all the pods become Running status.
 
 Then, run this command to access the service.
