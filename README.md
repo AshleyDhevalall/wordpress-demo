@@ -10,7 +10,7 @@ By combining Kustomze which was integrated to Kubernetes 1.14, it is pretty stra
 [kind](https://kind.sigs.k8s.io/) is a tool for running local Kubernetes clusters using Docker container “nodes”.
 
 ## Installing kind
-To install kind, run these commands (it takes a while)
+To create a cluster in kind, run these commands (it takes a while)
 ```
 $ kind create cluster
 ```
@@ -18,6 +18,11 @@ $ kind create cluster
 Then confirm “kind” cluster is available.
 ```
 $ kind get clusters
+```
+
+To delete a cluster in kind
+```
+$ kind delete cluster
 ```
 
 ## Setting up kubectl
