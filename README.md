@@ -2,7 +2,9 @@
 
 Sample repository that demonstrates using wordpress in [kind](https://kind.sigs.k8s.io/) cluster.  
 
-In this article, we will show the steps to run a cluster in single Docker container using [kind](https://kind.sigs.k8s.io/). kind is a good alternative to minikube because it only uses single container of Docker.
+In this article, we will show the steps to run a cluster in single Docker container using [kind](https://kind.sigs.k8s.io/).   
+
+kind is a good alternative to minikube because it only uses single container of Docker.
 
 By combining Kustomze which was integrated to Kubernetes 1.14, it is pretty straightforward to try it on your local machine.
 
@@ -21,21 +23,11 @@ The nodes are typically divided in two main sets, each of them hosting different
 The control plane. These nodes are the brain of the cluster. They contain the Kubernetes components that track the desired state, the current node state and make container scheduling decisions across the worker nodes.
 The worker nodes. These nodes are focused on hosting the desired containers. They contain the Kubernetes components that ensure containers assigned to a given node are created/terminated as decided by the control plane
 
+## What is kind?
+[kind](https://kind.sigs.k8s.io/) is a tool for running local Kubernetes clusters using Docker container “nodes”. kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI.
+
 ## Setup your local environment
 The main thing you will need is a way to create a Kubernetes cluster in your local machine. We recommend using kind to setup your local environment. 
-
-kind is a tool for running local Kubernetes clusters using Docker container “nodes”.
-kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI.
-
-In addition, you will also need kubectl installed on your local machine. You have various options:
-
-Install it locally in your machine, see the instructions in the official docs.
-Use the version provided by minikube. Note that if you choose this option, when you see a command like kubectl get pod you will need to replace it with minikube kubectl — get pod.
-If you previously enabled Kubernetes support in Docker, you should already have a version of kubectl installed. Check with kubectl version.
-Once you have both minikube and kubectl up and running in your machine, you are ready to start. Ask minikube to create your local cluster with:
-
-## What is kind?
-[kind](https://kind.sigs.k8s.io/) is a tool for running local Kubernetes clusters using Docker container “nodes”.
 
 ## Installing kind
 To create a cluster in kind, run these commands (it takes a while)
@@ -74,9 +66,6 @@ Deleting cluster "kind" ...
 ```
 
 ## Setting up kubectl
-Also, install the latest kubernetes-cli using Homebrew or Chocolatey.
-The latest Docker has Kubernetes feature but it may come with older kubectl .
-Check its version by running this command.
 ```
 $ kubectl version
 Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.0", GitCommit:"ab69524f795c42094a6630298ff53f3c3ebab7f4", GitTreeState:"clean", BuildDate:"2021-12-07T18:16:20Z", GoVersion:"go1.17.3", Compiler:"gc", Platform:"windows/amd64"}
