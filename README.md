@@ -85,12 +85,26 @@ persistentvolumeclaim/mysql-pv-claim created
 persistentvolumeclaim/wp-pv-claim created
 ```  
 
-Let’s check cluster’s status by typing these commands:
+Check cluster’s secrets by running the blow command
 ```
 $ kubectl get secrets
+NAME                    TYPE                                  DATA   AGE
+default-token-vrr78     kubernetes.io/service-account-token   3      12m
+mysql-pass-5m26tmdb5k   Opaque                                1      7m12s
+```
+```
 $ kubectl get pvc
+NAME             STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+mysql-pv-claim   Bound    pvc-1285b1f2-f52c-4606-b6ad-993af66b00f8   20Gi       RWO            standard       7m39s
+wp-pv-claim      Bound    pvc-1606fb2c-f05f-4599-81bc-d522f71c262f   20Gi       RWO            standard       7m39s
+```
 $ kubectl get pods
+wordpress-69b54b758-lq4xq          1/1     Running   1 (2m38s ago)   6m37s
+wordpress-mysql-6fc4d469bd-bqdbm   1/1     Running   0               6m37s
+```
 $ kubectl get services wordpress
+NAME        TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+wordpress   LoadBalancer   10.96.248.160   <pending>     80:31776/TCP   8m13s
 ```
 Wait until all the pods become Running status.
 
