@@ -45,6 +45,11 @@ Luckily, there is an official tutorial which is pretty well described. We can tr
 
 https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/
 
+Clone the repository onto your local machine
+```
+git clone 
+```
+
 First of all, download mysql-deployment.yaml and wordpress-deployment.yaml from the page.
 
 And create kustomization.yaml by running two cat commands.
