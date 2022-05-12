@@ -1,5 +1,5 @@
 # wordpress-demo
-Sample repository that demostrates using wordpress in kind cluster.  
+Sample repository that demonstrates using wordpress in kind cluster.  
 
 In this article, I will show the steps to run a cluster in single Docker container using kind.
 
@@ -7,15 +7,14 @@ In this article, I will show the steps to run a cluster in single Docker contain
 [kind](https://kind.sigs.k8s.io/) is a tool for running local Kubernetes clusters using Docker container “nodes”.
 
 ## Installing kind
-Because kind is implemented in go, make sure the latest golang is installed.
 To install kind, run these commands (it takes a while)
+```
+$ kind create cluster
+```
 
-```
-kind create cluster
-```
 Then confirm “kind” cluster is available.
 ```
-kind get clusters
+$ kind get clusters
 ```
 
 ## Setting up kubectl
@@ -23,7 +22,7 @@ Also, install the latest kubernetes-cli using Homebrew or Chocolatey.
 The latest Docker has Kubernetes feature but it may come with older kubectl .
 Check its version by running this command.
 ```
-kubectl version
+$ kubectl version
 ```
 
 Make sure it shows GitVersion: "v1.14.1" or above.
@@ -33,7 +32,7 @@ Once kubectl and kind are ready, open bash console and run these commands.
 
 ```
 export KUBECONFIG=”$(kind get kubeconfig-path)”
-kubectl cluster-info
+$ kubectl cluster-info
 ```
 
 If kind is properly set up, some information will be shown.
@@ -57,7 +56,7 @@ Once those yaml files are prepared, layout them as following,
 Then apply them to your cluster.
 ```
 cd k8s-wp
-kubectl apply -k ./
+$ kubectl apply -k ./
 ```  
 
 You will see outputs like this if the command succeeded.
@@ -73,16 +72,16 @@ persistentvolumeclaim/wp-pv-claim created
 
 Let’s check cluster’s status by typing these commands:
 ```
-kubectl get secrets
-kubectl get pvc
-kubectl get pods
-kubectl get services wordpress
+$ kubectl get secrets
+$ kubectl get pvc
+$ kubectl get pods
+$ kubectl get services wordpress
 ```
 
 Wait until all the pods become Running status.
 Then, run this command to access the service.
 ```
-kubectl port-forward svc/wordpress 8080:80
+$ kubectl port-forward svc/wordpress 8080:80
 ```
 
 And open http://localhost:8080/
