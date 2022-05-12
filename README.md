@@ -22,9 +22,10 @@ The control plane. These nodes are the brain of the cluster. They contain the Ku
 The worker nodes. These nodes are focused on hosting the desired containers. They contain the Kubernetes components that ensure containers assigned to a given node are created/terminated as decided by the control plane
 
 ## Setup your local environment
-The main thing you will need is a way to create a Kubernetes cluster in your local machine. While Docker for Windows/Mac comes with built-in support for Kubernetes, I recommend using minikube to setup your local environment. The addons and extra features minikube provides simplifies many of the scenarios you might want to test locally.
+The main thing you will need is a way to create a Kubernetes cluster in your local machine. We recommend using kind to setup your local environment. 
 
-Minikube will create a very simple cluster with a single Virtual Machine where all the Kubernetes components will be deployed. This means you will need some container/virtualization solution installed on your machine, of which minikube supports a long list. Check the prerequisites and installation instructions for your OS in the official minikube docs.
+kind is a tool for running local Kubernetes clusters using Docker container “nodes”.
+kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI.
 
 In addition, you will also need kubectl installed on your local machine. You have various options:
 
