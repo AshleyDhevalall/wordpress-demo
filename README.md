@@ -138,3 +138,142 @@ Forwarding from [::1]:8080 -> 80
 And open http://localhost:8080/
 
 ![test](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/docs/wordpress.png)
+
+Setting Up An Ingress Controller
+We can leverage KIND's extraPortMapping config option when creating a cluster to forward ports from the host to an ingress controller running on a node.
+
+We can also setup a custom node label by using node-labels in the kubeadm InitConfiguration, to be used by the ingress controller nodeSelector.
+
+Create a cluster
+Deploy an Ingress controller, the following ingress controllers are known to work:
+Ingress NGINX
+
+Create Cluster
+Create a kind cluster with extraPortMappings and node-labels.
+
+extraPortMappings allow the local host to make requests to the Ingress controller over ports 80/443
+node-labels only allow the ingress controller to run on a specific node(s) matching the label selector
+```
+cat <<EOF | kind create cluster --config=-
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+    protocol: TCP
+  - containerPort: 443
+    hostPort: 443
+    protocol: TCP
+EOF
+```
+
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+```
+
+The manifests contains kind specific patches to forward the hostPorts to the ingress controller, set taint tolerations and schedule it to the custom labelled node.
+
+Now the Ingress is all setup. Wait until is ready to process requests running:
+```
+kubectl wait --namespace ingress-nginx \
+  --for=condition=ready pod \
+  --selector=app.kubernetes.io/component=controller \
+  --timeout=90s
+```
+
+Using Ingress
+The following example creates simple http-echo services and an Ingress object to route to these services.
+
+```
+kind: Pod
+apiVersion: v1
+metadata:
+  name: foo-app
+  labels:
+    app: foo
+spec:
+  containers:
+  - name: foo-app
+    image: hashicorp/http-echo:0.2.3
+    args:
+    - "-text=foo"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: foo-service
+spec:
+  selector:
+    app: foo
+  ports:
+  # Default port used by the image
+  - port: 5678
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: bar-app
+  labels:
+    app: bar
+spec:
+  containers:
+  - name: bar-app
+    image: hashicorp/http-echo:0.2.3
+    args:
+    - "-text=bar"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: bar-service
+spec:
+  selector:
+    app: bar
+  ports:
+  # Default port used by the image
+  - port: 5678
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/foo"
+        backend:
+          service:
+            name: foo-service
+            port:
+              number: 5678
+      - pathType: Prefix
+        path: "/bar"
+        backend:
+          service:
+            name: bar-service
+            port:
+              number: 5678
+---
+```
+
+Apply the contents
+```
+kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/usage.yaml
+
+Now verify that the ingress works
+```
+# should output "foo"
+curl localhost/foo
+# should output "bar"
+curl localhost/bar
+```
