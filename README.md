@@ -1,7 +1,7 @@
 # Wordpress demo
 
 Sample repository that demonstrates using wordpress in [kind](https://kind.sigs.k8s.io/) cluster.  
-<br>
+
 In this article, we will show the steps to run a cluster in single Docker container using [kind](https://kind.sigs.k8s.io/).   
 
 kind is a good alternative to minikube because it only uses single container of Docker.
