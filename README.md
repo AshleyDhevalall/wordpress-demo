@@ -167,7 +167,7 @@ nodes:
     protocol: TCP
 EOF
 ```
-Apply manifest files to your cluster
+Apply manifest files to your cluster.
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 ```
@@ -259,7 +259,7 @@ spec:
 ---
 ```
 
-Apply manifest files to your cluster
+Apply manifest files to your cluster.
 ```
 kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/usage.yaml
 ```
