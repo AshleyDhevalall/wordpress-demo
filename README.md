@@ -139,20 +139,16 @@ And open http://localhost:8080/
 
 ![test](https://github.com/AshleyDhevalall/wordpress-demo/blob/main/docs/wordpress.png)
 
-Setting Up An Ingress Controller
+## Setting Up An NGINX Ingress Controller
 We can leverage KIND's extraPortMapping config option when creating a cluster to forward ports from the host to an ingress controller running on a node.
 
 We can also setup a custom node label by using node-labels in the kubeadm InitConfiguration, to be used by the ingress controller nodeSelector.
 
-Create a cluster
-Deploy an Ingress controller, the following ingress controllers are known to work:
-Ingress NGINX
+Let's create a kind cluster with extraPortMappings and node-labels.
 
-Create Cluster
-Create a kind cluster with extraPortMappings and node-labels.
+- extraPortMappings allow the local host to make requests to the Ingress controller over ports 80/443
+- node-labels only allow the ingress controller to run on a specific node(s) matching the label selector
 
-extraPortMappings allow the local host to make requests to the Ingress controller over ports 80/443
-node-labels only allow the ingress controller to run on a specific node(s) matching the label selector
 ```
 cat <<EOF | kind create cluster --config=-
 kind: Cluster
@@ -174,7 +170,7 @@ nodes:
     protocol: TCP
 EOF
 ```
-
+Apply manifest files to your cluster
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 ```
@@ -189,7 +185,7 @@ kubectl wait --namespace ingress-nginx \
   --timeout=90s
 ```
 
-Using Ingress
+## Using Ingress
 The following example creates simple http-echo services and an Ingress object to route to these services.
 
 ```
@@ -266,14 +262,12 @@ spec:
 ---
 ```
 
-Apply the contents
+Apply manifest files to your cluster
 ```
 kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/usage.yaml
-
+```
 Now verify that the ingress works
 ```
-# should output "foo"
-curl localhost/foo
-# should output "bar"
-curl localhost/bar
+$ curl localhost/foo
+$ curl localhost/bar
 ```
